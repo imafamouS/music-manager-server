@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <!-- SessionFactory -->
+  <bean id="sessionFactoryBean" class="com.infamous.hibernate.SessionFactoryBeanImpl">
+    <property name="configPath" value="hibernate/hibernate.cfg.xml" />
+    <property name="propertiesPath" value="hibernate/hibernate.properties" />
+  </bean>
+
+  <!-- SongDaoBean -->
+  <bean id="songDaoBean" class="com.infamous.dao.SongDaoImpl">
+    <constructor-arg ref="sessionFactoryBean" />
+  </bean>
+
+  <!-- MusicManagerServiceBean -->
+  <bean id="musicManagerServiceBean" class="com.infamous.service.MusicManagerServiceImpl">
+    <property name="songDao" ref="songDaoBean" />
+  </bean>
+
+</beans>
