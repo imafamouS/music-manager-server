@@ -35,7 +35,7 @@ public class SongDaoImpl implements SongDao {
             SQLQuery query = session.createSQLQuery(queryStr);
             query.addEntity(Song.class);
             
-            songs.addAll((List<Song>) query.list());
+            songs.addAll(query.list());
             
             transaction.commit();
             

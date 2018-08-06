@@ -1,11 +1,11 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
   <import resource="core.bean.xml" />
 
   <!-- Configuration port for client-->
-  <bean id="rmiRegistry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+  <bean class="org.springframework.remoting.rmi.RmiRegistryFactoryBean" id="rmiRegistry">
     <property name="port" value="1099" />
     <property name="alwaysCreate" value="true" />
   </bean>

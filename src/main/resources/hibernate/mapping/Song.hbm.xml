@@ -5,11 +5,11 @@
 <hibernate-mapping>
   <class name="com.infamous.model.Song" table="song">
 
-    <id name="id" column="ID">
+    <id column="ID" name="id">
       <generator class="native" />
     </id>
 
-    <property name="name" column="NAME" />
-    <property name="dateAdded" column="DATE_ADDED" />
+    <property column="NAME" name="name" />
+    <property column="DATE_ADDED" name="dateAdded" />
   </class>
 </hibernate-mapping>

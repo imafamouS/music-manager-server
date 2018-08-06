@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by infamouSs on 8/4/18.
  */
-public interface MusicManagerService {
+public interface MusicManagerService extends Service {
     
     List<Song> findAll();
     

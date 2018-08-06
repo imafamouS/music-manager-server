@@ -23,27 +23,21 @@ public class Log {
     public final static int E = 4;
     
     public final static SystemOutPrinter SYSTEM = new SystemOutPrinter();
-    
+    final static int MAX_LOG_LINE_LENGTH = 4000;
     private final static Map<String, String> mTags = new HashMap<>();
-    
+    private final static Pattern ANONYMOUS_CLASS = Pattern.compile("\\$\\d+$");
+    private final static int STACK_DEPTH = 4;
     private static String[] mUseTags = new String[]{"tag", "TAG"};
     private static boolean mUseFormat = false;
     private static int mMinLevel = V;
-    
     private static Set<Printer> mPrinters = new HashSet<>();
-    
-    final static int MAX_LOG_LINE_LENGTH = 4000;
-    
-    private final static Pattern ANONYMOUS_CLASS = Pattern.compile("\\$\\d+$");
-    private final static int STACK_DEPTH = 4;
-    
-    private Log() {
-    }
-    
-    
     
     static {
         usePrinter(SYSTEM, true);
+    }
+    
+    
+    private Log() {
     }
     
     public static synchronized Log useTags(String[] tags) {
