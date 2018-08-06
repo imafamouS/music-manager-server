@@ -7,7 +7,7 @@
   <bean class="org.springframework.jmx.support.ConnectorServerFactoryBean" id="serverConnector">
     <property name="objectName" value="connector:name=rmi" />
     <property name="serviceUrl"
-      value="service:jmx:rmi://localhost/jndi/rmi://localhost:1099/connector" />
+      value="service:jmx:rmi://localhost/jndi/rmi://localhost:9999/connector" />
   </bean>
 
 </beans>

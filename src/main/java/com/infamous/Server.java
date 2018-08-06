@@ -11,6 +11,7 @@ import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,10 +22,13 @@ public class Server implements MusicManagerServer {
     private ApplicationContext context;
     
     public static void main(String[] args) throws Exception {
-        
+        BrokerService broker = new BrokerService();
+        broker.addConnector("tcp://localhost:61616");
+    
+        //
         Server app = new Server();
         app.start();
-        
+        broker.start();
         ActiveMQQueue myTopic = (ActiveMQQueue) app.getContext().getBean("destination");
         JmsTemplate jmsTemplate = (JmsTemplate) app.getContext().getBean("jmsTemplateBean");
         
@@ -34,10 +38,12 @@ public class Server implements MusicManagerServer {
         Receiver sender = (Receiver) app.getContext().getBean("messageReceiver");
         Sender sender1 = (Sender) app.getContext().getBean("messageSender");
         Log.d(sender != null ? "sender # null" : "sender is null");
-        
-        sender1.send("SEND NEW MESSAGE");
+        for(int i=0; i< 10; i++) {
+            sender1.send("SEND NEW MESSAGE");
+            Log.d(sender.getJmsTemplate().receive());
+    
+        }
         //
-        Log.d(sender.getJmsTemplate().receive());
     }
     
     public static void clientSendMessageJMS() throws JMSException {

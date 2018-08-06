@@ -6,13 +6,14 @@
 
   <!-- Configuration port for client-->
   <bean class="org.springframework.remoting.rmi.RmiRegistryFactoryBean" id="rmiRegistry">
-    <property name="port" value="1099" />
+    <property name="port" value="9999" />
     <property name="alwaysCreate" value="true" />
   </bean>
 
   <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
     <property name="serviceName" value="MusicManagerService" />
     <property name="service" ref="musicManagerServiceBean" />
+    <property name="registry" ref="rmiRegistry"/>
     <property name="serviceInterface" value="com.infamous.service.MusicManagerService" />
   </bean>
 
