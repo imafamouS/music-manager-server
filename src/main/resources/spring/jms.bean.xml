@@ -14,6 +14,7 @@
     <property name="connectionFactory" ref="connectionFactory" />
     <property name="defaultDestinationName" value="destination" />
     <property name="defaultDestination" ref="destination" />
+    <property name="pubSubDomain" value="true"/>
     <property name="receiveTimeout" value="1000" />
   </bean>
 

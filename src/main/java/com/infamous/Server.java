@@ -39,11 +39,6 @@ public class Server implements MusicManagerServer {
         Receiver sender = (Receiver) app.getContext().getBean("messageReceiver");
         Sender sender1 = (Sender) app.getContext().getBean("messageSender");
         Log.d(sender != null ? "sender # null" : "sender is null");
-        for(int i=0; i< 10; i++) {
-            sender1.send("SEND NEW MESSAGE");
-            Log.d(sender.getJmsTemplate().receive());
-    
-        }
         //
     }
     

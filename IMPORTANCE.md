@@ -7,3 +7,5 @@
 ### ref
 
 > https://github.com/utkuufuk/arabic-turkish-dictionary
+
+> https://github.com/omerbsezer/Module1
