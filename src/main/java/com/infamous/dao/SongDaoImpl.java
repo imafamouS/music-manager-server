@@ -1,24 +1,34 @@
 package com.infamous.dao;
 
-import com.infamous.hibernate.SessionFactoryBean;
 import com.infamous.logging.Log;
 import com.infamous.model.Song;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
  * Created by infamouSs on 8/4/18.
  */
-public class SongDaoImpl implements SongDao {
+public class SongDaoImpl implements SongDao, Serializable {
     
     private SessionFactory sessionFactory;
     
-    public SongDaoImpl(SessionFactoryBean sessionFactoryBean) {
-        this.sessionFactory = sessionFactoryBean.getSessionFactory();
+    public SongDaoImpl() {
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate/hibernate.cfg.xml");
+        
+        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
+                  .applySettings(configuration.getProperties())
+                  .buildServiceRegistry();
+        
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
     
     @Override

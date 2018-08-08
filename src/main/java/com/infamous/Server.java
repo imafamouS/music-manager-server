@@ -3,6 +3,9 @@ package com.infamous;
 import com.infamous.jms.receiver.Receiver;
 import com.infamous.jms.sender.Sender;
 import com.infamous.logging.Log;
+import com.infamous.service.MusicManagerService;
+import java.lang.management.ManagementFactory;
+import java.util.Set;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
@@ -10,6 +13,9 @@ import javax.jms.Message;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
+import javax.management.MBeanServer;
+import javax.management.ObjectInstance;
+import javax.management.ObjectName;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.command.ActiveMQQueue;
@@ -30,6 +36,23 @@ public class Server implements MusicManagerServer {
         Server app = new Server();
         app.start();
         broker.start();
+        MBeanServer server = ManagementFactory.getPlatformMBeanServer();
+    
+        ObjectName mbeanName = new ObjectName("com.infamous:name=musicManagerService");
+    
+        MusicManagerService musicManagerService = (MusicManagerService) app.getContext().getBean("musicManagerServiceBean");
+    
+        server.registerMBean(musicManagerService, mbeanName);
+    
+        Set<ObjectInstance> instances = server.queryMBeans(new ObjectName("com.infamous:name=musicManagerService"), null);
+    
+        ObjectInstance instance = (ObjectInstance) instances.toArray()[0];
+    
+        System.out.println("Class Name:t" + instance.getClassName());
+        System.out.println("Object Name:t" + instance.getObjectName());
+    
+    
+    
         ActiveMQQueue myTopic = (ActiveMQQueue) app.getContext().getBean("destination");
         JmsTemplate jmsTemplate = (JmsTemplate) app.getContext().getBean("jmsTemplateBean");
         

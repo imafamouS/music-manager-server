@@ -14,7 +14,7 @@
     <property name="serviceName" value="MusicManagerService" />
     <property name="service" ref="musicManagerServiceBean" />
     <property name="registry" ref="rmiRegistry"/>
-    <property name="serviceInterface" value="com.infamous.service.MusicManagerService" />
+    <property name="serviceInterface" value="com.infamous.service.MusicManagerServiceMBean" />
   </bean>
 
 </beans>

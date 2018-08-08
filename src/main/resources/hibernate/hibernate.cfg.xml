@@ -3,15 +3,15 @@
   "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.connection.driver_class"></property>
-    <property name="hibernate.connection.url"></property>
-    <property name="hibernate.connection.username"></property>
-    <property name="hibernate.connection.password"></property>
-    <property name="hibernate.connection.pool_size"></property>
-    <property name="hibernate.current_session_context_class"></property>
-    <property name="hibernate.show_sql"></property>
-    <property name="hibernate.dialect"></property>
-    <property name="hibernate.hbm2ddl.auto"></property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/musicmanager</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">9244</property>
+    <property name="hibernate.connection.pool_size">5</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
 
     <mapping resource="hibernate/mapping/Song.hbm.xml" />
   </session-factory>

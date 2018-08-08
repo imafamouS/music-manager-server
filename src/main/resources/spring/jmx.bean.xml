@@ -16,13 +16,13 @@
         <entry key="com.infamous:name=musicManagerService" value-ref="musicManagerServiceBean" />
       </map>
     </property>
-    <property name="notificationListenerMappings">
-      <map>
-        <entry key="musicManagerServiceBean">
-          <bean class="com.infamous.notification.ConsoleJMXNotification" />
-        </entry>
-      </map>
-    </property>
+    <!--<property name="notificationListenerMappings">-->
+      <!--<map>-->
+        <!--<entry key="musicManagerServiceBean">-->
+          <!--<bean class="com.infamous.notification.ConsoleJMXNotification" />-->
+        <!--</entry>-->
+      <!--</map>-->
+    <!--</property>-->
   </bean>
 
 </beans>

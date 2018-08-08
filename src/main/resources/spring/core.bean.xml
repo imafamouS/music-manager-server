@@ -4,19 +4,18 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
   <!-- SessionFactory -->
-  <bean class="com.infamous.hibernate.SessionFactoryBeanImpl" id="sessionFactoryBean">
-    <property name="configPath" value="hibernate/hibernate.cfg.xml" />
-    <property name="propertiesPath" value="hibernate/hibernate.properties" />
-  </bean>
+  <!--<bean class="com.infamous.hibernate.SessionFactoryBeanImpl" id="sessionFactoryBean">-->
+    <!--<property name="configPath" value="hibernate/hibernate.cfg.xml" />-->
+    <!--<property name="propertiesPath" value="hibernate/hibernate.properties" />-->
+  <!--</bean>-->
 
   <!-- SongDaoBean -->
-  <bean class="com.infamous.dao.SongDaoImpl" id="songDaoBean">
-    <constructor-arg ref="sessionFactoryBean" />
-  </bean>
+  <!--<bean class="com.infamous.dao.SongDaoImpl" id="songDaoBean">-->
+    <!--<constructor-arg ref="sessionFactoryBean" />-->
+  <!--</bean>-->
 
   <!-- MusicManagerServiceBean -->
-  <bean class="com.infamous.service.MusicManagerServiceImpl" id="musicManagerServiceBean">
-    <property name="songDao" ref="songDaoBean" />
+  <bean class="com.infamous.service.MusicManagerService" id="musicManagerServiceBean">
   </bean>
 
 </beans>
